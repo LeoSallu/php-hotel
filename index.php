@@ -97,9 +97,8 @@ if ($parking === 'yes') {
                             <td><?php echo $hotel['vote'] ?></td>
                             <td><?php echo $hotel['distance_to_center'] ?> Km</td>
                         </tr>
-                    <?php } ?>
                     <!-- Se il valore corrisponde a quello del opzione selezionata dall'utente mostra solo quelli  -->
-                    <?php if ($userInput === $hotel['parking']) { ?>
+                    <?php } elseif ($userInput === $hotel['parking']) { ?>
                         <tr>
                             <td><?php echo $hotel['name'] ?></td>
                             <td><?php echo $hotel['description'] ?></td>
