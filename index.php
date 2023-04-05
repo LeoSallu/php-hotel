@@ -39,6 +39,8 @@ $hotels = [
         'distance_to_center' => 50
     ],
 ];
+    $parking = $_GET('parking');
+    $userInput = false;
 ?>
 <!-- Html  -->
 <!DOCTYPE html>
@@ -51,32 +53,57 @@ $hotels = [
     <title>PHP hotel</title>
     <!-- bootstrap cdn  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <!-- my css  -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- Tabella con dati presi dal foreach  -->
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Nome</th>
-                <th scope="col">Descrizione</th>
-                <th scope="col">Parcheggio</th>
-                <th scope="col">Voto</th>
-                <th scope="col">Distanza dal Centro</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($hotels as $hotel) { ?>
+    <div class="container">
+        <h1 class="text-light text-center">Boolean Hotels</h1>
+        <!-- Form per filtrare hotel con parcheggio  -->
+        <form method="GET">
+            <?php
+                if($parking===1){
+                $userInput= true;
+                echo "C'è parcheggio "
+                }
+                else if ($parking===2){
+                    $userInput=false;
+                    echo "Non c'è parcheggio "
+                }
+            ?>
+            <select name="parking" class="form-select form-select-sm w-25">
+                <option selected>Scegli opzione per parcheggio</option>
+                <option name="" value="1">Con il parcheggio</option>
+                <option value="2">Senza Parcheggio</option>
+            </select>
+            <button type="submit" class="btn btn-info">Invia richiesta</button>
+        </form>
+        <!-- Tabella con dati presi dal foreach  -->
+        <table class="table table-info">
+            <thead>
                 <tr>
-                    <td><?php echo $hotel['name'] ?></td>
-                    <td><?php echo $hotel['description'] ?></td>
-                    <td><?php echo $hotel['parking'] ?></td>
-                    <td><?php echo $hotel['vote'] ?></td>
-                    <td><?php echo $hotel['distance_to_center'] ?></td>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Descrizione</th>
+                    <th scope="col">Parcheggio</th>
+                    <th scope="col">Voto</th>
+                    <th scope="col">Distanza dal Centro</th>
                 </tr>
-            <?php } ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php foreach ($hotels as $hotel) { ?>
+                    <tr>
+                        <td><?php echo $hotel['name'] ?></td>
+                        <td><?php echo $hotel['description'] ?></td>
+                        <td><?php echo $hotel['parking'] ?></td>
+                        <td><?php echo $hotel['vote'] ?></td>
+                        <td><?php echo $hotel['distance_to_center'] ?> Km</td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
+
     <!-- Bootstrap script  -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>

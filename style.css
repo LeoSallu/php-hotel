@@ -1,0 +1,17 @@
+/*
+-----Reset 
+*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/*
+ -Style-  
+*/
+body{
+    background-color: aquamarine;
+}
+.container{
+    height: 100vh;
+}
