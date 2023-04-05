@@ -39,6 +39,7 @@ $hotels = [
         'distance_to_center' => 50
     ],
 ];
+// Filtro parcheggio 
 $parking = $_GET['parking'];
 $userInput = null;
 if ($parking === 'yes') {
@@ -87,6 +88,7 @@ if ($parking === 'yes') {
             </thead>
             <tbody>
                 <?php foreach ($hotels as $hotel) { ?>
+                    <!-- Se il valore è nullo stampa tutti gli hotel  -->
                     <?php if ($userInput === null) { ?>
                         <tr>
                             <td><?php echo $hotel['name'] ?></td>
@@ -96,6 +98,7 @@ if ($parking === 'yes') {
                             <td><?php echo $hotel['distance_to_center'] ?> Km</td>
                         </tr>
                     <?php } ?>
+                    <!-- Se il valore corrisponde a quello del opzione selezionata dall'utente mostra solo quelli  -->
                     <?php if ($userInput === $hotel['parking']) { ?>
                         <tr>
                             <td><?php echo $hotel['name'] ?></td>
